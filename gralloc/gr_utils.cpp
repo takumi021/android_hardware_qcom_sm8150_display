@@ -826,7 +826,6 @@ unsigned int GetRgbUBwcMetaBufferSize(int width, int height, uint32_t bpp) {
   // Align meta buffer height to 16 blocks
   meta_height = ALIGN(((height + block_height - 1) / block_height), 16);
 
-  // Align meta buffer width to 64 blocks
   meta_width = ALIGN(((width + block_width - 1) / block_width), 64);
 
   // Align meta buffer size to 4K
@@ -1021,7 +1020,7 @@ void GetAlignedWidthAndHeight(const BufferInfo &info, unsigned int *alignedw,
       aligned_w = ALIGN(width, 16);
       break;
     case HAL_PIXEL_FORMAT_RAW12:
-      aligned_w = ALIGN(width * 12 / 8, 16);
+      aligned_w = ALIGN(width * 12 / 8, 8);
       break;
     case HAL_PIXEL_FORMAT_RAW10:
       {

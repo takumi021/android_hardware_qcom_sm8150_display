@@ -40,6 +40,10 @@ ifeq ($(LLVM_SA), true)
     common_flags += --compile-and-analyze --analyzer-perf --analyzer-Werror
 endif
 
+ifeq ($(TARGET_NEEDS_RAW10_BUFFER_FIX),true)
+LOCAL_CFLAGS                  += -DRAW10_BUFFER_FIX
+endif
+
 #Common libraries external to display HAL
 common_libs := liblog libutils libcutils libhardware
 common_deps  :=
